@@ -1,42 +1,23 @@
 const { io } = require('../server')
+const { TicketControl } = require('../classes/ticket-control')
     // para conocer que cliente esta conectado
+
+const ticketControl = new TicketControl();
+
 io.on('connection', (cliente) => {
 
-    console.log('Usuario Cliente Conectado');
 
-    cliente.emit("enviarMensaje", {
 
-        nombre: "servidor",
-        mensaje: "envio desde mi servidor"
+    cliente.on("siguienteTicket", (data, callback) => {
+        let siguiente = ticketControl.siguientePorAtender();
 
-    });
-
-    cliente.on('disconnect', () => {
-        console.log('usuario desconectado');
-
-    });
-
-    //escuchar el cliente
-    cliente.on('enviarMensaje', (data, callback) => {
-        console.log(data);
-        cliente.broadcast.emit('enviarMensaje', data);
-
-        /*
-                if (mensaje.usuario) {
-                    callback({
-                        resp: 'TODO SALIO BIEN !'
-                    });
-
-                } else {
-                    callback({
-                        resp: 'TODO SALIO MAL !!!!!!!!!!'
-                    });
-
-                }
-        */
+        console.log('ticket', siguiente);
+        callback(siguiente);
 
 
     });
+
+
 
 
 });
