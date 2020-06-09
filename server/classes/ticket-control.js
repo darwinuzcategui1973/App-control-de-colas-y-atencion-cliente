@@ -69,7 +69,7 @@ class TicketControl {
 
     atentederClienteDeTicket(escritorio) {
         if (this.tickets.length == 0) {
-            return ' No hay Cliente(s) con Ticket por Atender';
+            return 'No hay Cliente(s) con Ticket por Atender';
         }
 
         // voy a obtener el primer cliente con ticket en espera

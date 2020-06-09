@@ -30,8 +30,18 @@ $('button').on('click', function() {
         escritorio: escritorio
     }, function(resp) {
 
+        if (resp === 'No hay Cliente(s) con Ticket por Atender') {
+            label.text(resp);
+            alert(resp);
+            return;
+        }
+
         console.log(resp);
+        label.text('Ticket ' + resp.numero);
 
     });
 
 });
+
+// me quede en vide10 seccion 15
+// ademas falta el commit y push
