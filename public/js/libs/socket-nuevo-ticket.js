@@ -13,6 +13,13 @@ socket.on('disconnect', function() {
     console.log('perdimos conexion con el servidor');
 });
 
+socket.on('estadoActual', function(respuesta) {
+    console.log(respuesta);
+
+    label.text(respuesta.actual);
+
+});
+
 // estos es jquery
 //que le digo que hace al boton 
 $('button').on('click', function() {
