@@ -17,9 +17,11 @@ io.on('connection', (cliente) => {
 
     });
 
+
     cliente.emit("estadoActual", {
 
         actual: ticketControl.getUltimoTicket(),
+        ultimos4: ticketControl.getUltimos4(),
         mensaje: "estado actual enviado por el servidor"
 
     });
@@ -38,11 +40,12 @@ io.on('connection', (cliente) => {
         callback(atenderTicket);
         // actulizar o notificar cambio en los ultimos 4
 
+        cliente.broadcast.emit("ultimo4Atendido", {
+            ultimos4: ticketControl.getUltimos4()
+        });
+
 
     });
-
-
-
 
 
 });

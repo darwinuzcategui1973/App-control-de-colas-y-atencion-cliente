@@ -67,6 +67,12 @@ class TicketControl {
 
     }
 
+    getUltimos4() {
+        return this.ultimos4tickets;
+
+    }
+
+
     atentederClienteDeTicket(escritorio) {
         if (this.tickets.length == 0) {
             return 'No hay Cliente(s) con Ticket por Atender';
@@ -96,8 +102,6 @@ class TicketControl {
         this.grabarArchivo();
 
         return atenderTicket;
-
-
 
 
     }
